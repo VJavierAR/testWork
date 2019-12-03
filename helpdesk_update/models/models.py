@@ -51,30 +51,29 @@ class helpdesk_update(models.Model):
     
     @api.onchange('x_studio_tipo_de_falla','x_studio_tipo_de_incidencia')
     def crear_solicitud_refaccion(self):
-            self.ensure_one()
-            if  (self.x_studio_tipo_de_falla == 'Solicitud de refacción' ) or (self.x_studio_tipo_de_incidencia == 'Solicitud de refacción' ) :                
-                sale = self.sudo().env['sale.order'].create({'partner_id' : self.partner_id.id
-                                    , 'origin' : "Ticket de refacción: " + str(self.ticket_type_id.id)
-                                    , 'x_studio_tipo_de_solicitud' : 'Venta'
-                                    , 'x_studio_requiere_instalacin' : True
-                                    #, 'x_studio_fecha_y_hora_de_visita' : self.x_studio_rango_inicial_de_visita
-                                    #, 'x_studio_field_rrhrN' : self.x_studio_rango_final_de_visita
-                                    #, 'x_studio_comentarios_para_la_visita' : str(self.ticket_type_id.name)
-                                    #, 'x_studio_field_bAsX8' : self.x_studio_prioridad
-                                    #, 'commitment_date' : self.x_studio_rango_inicial_de_visita
-                                    #, 'x_studio_fecha_final' : self.x_studio_rango_final_de_visita
-                                    , 'user_id' : self.user_id.id
-                                    , 'x_studio_tcnico' : self.x_studio_tcnico.id
-                                    , 'warehouse_id' : 5865   ##Id GENESIS AGRICOLA REFACCIONES  stock.warehouse
-                                    , 'team_id' : 1
-                                  })
-                #self.env.cr.commit()
-                #for c in self.x_studio_field_tLWzF:
-                for c in self.x_studio_productos:
-                    self.sudo().env['sale.order.line'].create({'order_id' : sale.id
-                                                      , 'product_id' : c.id
-                                                      , 'product_uom_qty' : c.x_studio_cantidad_pedida
-                                                      })
+        self.ensure_one()
+        if  (self.x_studio_tipo_de_falla == 'Solicitud de refacción' ) or (self.x_studio_tipo_de_incidencia == 'Solicitud de refacción' ) :                
+            sale = self.sudo().env['sale.order'].create({'partner_id' : self.partner_id.id
+                                                         , 'origin' : "Ticket de refacción: " + str(self.ticket_type_id.id)
+                                                         , 'x_studio_tipo_de_solicitud' : 'Venta'
+                                                         , 'x_studio_requiere_instalacin' : True
+                                                         #, 'x_studio_fecha_y_hora_de_visita' : self.x_studio_rango_inicial_de_visita
+                                                         #, 'x_studio_field_rrhrN' : self.x_studio_rango_final_de_visita
+                                                         #, 'x_studio_comentarios_para_la_visita' : str(self.ticket_type_id.name)
+                                                         #, 'x_studio_field_bAsX8' : self.x_studio_prioridad
+                                                         #, 'commitment_date' : self.x_studio_rango_inicial_de_visita
+                                                         #, 'x_studio_fecha_final' : self.x_studio_rango_final_de_visita
+                                                         , 'user_id' : self.user_id.id
+                                                         , 'x_studio_tcnico' : self.x_studio_tcnico.id
+                                                         , 'warehouse_id' : 5865   ##Id GENESIS AGRICOLA REFACCIONES  stock.warehouse
+                                                         , 'team_id' : 1})
+            #self.env.cr.commit()
+            #for c in self.x_studio_field_tLWzF:
+            for c in self.x_studio_productos:
+                self.sudo().env['sale.order.line'].create({'order_id' : sale.id
+                                                           , 'product_id' : c.id
+                                                           , 'product_uom_qty' : c.x_studio_cantidad_pedida
+                                                          })
                 self['x_studio_field_nO7Xg'] = sale.id
                 sale.sudo().env['sale.order'].write({'x_studio_tipo_de_solicitud' : 'Venta'})
                 #self.env.invalidate_all()
