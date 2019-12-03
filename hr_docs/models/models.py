@@ -31,6 +31,7 @@ class hr_docs(models.Model):
     
 class hr_docs_lines(models.Model):
     _name='hr.document'
+    _description='archivo'
     name=fields.Char('Descripcion')
     archivo=fields.Binary('Archivo')
     hr_employee=fields.Many2one('hr.employee')
