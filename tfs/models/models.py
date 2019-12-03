@@ -134,6 +134,7 @@ class tfs(models.Model):
 
 class evidencias(models.Model):
     _name='tfs.evidencia'
+    _description='evidencia tfs'
     name=fields.Char(string='Descripcion')
     evidencia=fields.Binary(string='Archivo')
     tfs_id=fields.Many2one('tfs.tfs')
