@@ -98,7 +98,9 @@ class helpdesk_update(models.Model):
             sale = self.env['stock.picking'].create({'partner_id' : record.partner_id.id
                                              ,'almacenOrigen':record.x_studio_empresas_relacionadas.id
                                              ,'almacenOrigen':record.x_studio_field_yPznZ.id        
-        
+                                             ,'location_id':1
+                                             ,'location_dest_id':1
+                                             ,'scheduled_date': record.fecha_prevista     
                                             #, 'origin' : "Ticket de tóner: " + str(record.ticket_type_id.id)
                                             #, 'x_studio_tipo_de_solicitud' : "Venta"
                                             #, 'x_studio_requiere_instalacin' : True
