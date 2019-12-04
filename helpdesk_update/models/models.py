@@ -113,7 +113,7 @@ class helpdesk_update(models.Model):
                                           })
             _logger.info('************* haciendo algo xD '+str(sale.id) )
             record['x_studio_transferencia'] = sale.id
-            """
+            
             for c in record.x_studio_equipo_por_nmero_de_serie:
              # _logger.info('*************cantidad a solicitar: ' + str(c.x_studio_cantidad_a_solicitar))
               self.env['stock.move'].create({'picking_id' : sale.id
@@ -124,7 +124,7 @@ class helpdesk_update(models.Model):
                                              ,'location_dest_id':1
                                             #, 'product_uom_qty' : c.x_studio_cantidad_pedida
                                           })
-            """
+            
             #sale.env['sale.order'].write({'x_studio_tipo_de_solicitud' : 'Venta'})
             #self.env.cr.execute("update sale_order set x_studio_tipo_de_solicitud = 'Venta' where  id = " + str(sale.id) + ";")
 
