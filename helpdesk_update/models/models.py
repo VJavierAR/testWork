@@ -96,8 +96,8 @@ class helpdesk_update(models.Model):
       for record in self:  
         if record.team_id.id == 76 :
             sale = self.env['stock.picking'].create({'partner_id' : record.partner_id.id
-                                             #,'almacenOrigen':record.x_studio_empresas_relacionadas.id
-                                             #,'almacenDestino':record.x_studio_field_yPznZ.id        
+                                             ,'almacenOrigen':record.x_studio_empresas_relacionadas.id
+                                             ,'almacenDestino':record.x_studio_field_yPznZ.id        
                                              ,'location_id':12
                                              ,'location_dest_id':16
                                              ,'scheduled_date': record.x_studio_fecha_prevista
