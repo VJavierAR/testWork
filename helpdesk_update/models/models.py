@@ -117,6 +117,7 @@ class helpdesk_update(models.Model):
               self.env['stock.move'].create({'picking_id' : sale.id
                                             , 'product_id' : c.id
                                              ,'name':"test"
+                                             ,'product_uom':1
                                             #, 'product_uom_qty' : c.x_studio_cantidad_pedida
                                           })
             #sale.env['sale.order'].write({'x_studio_tipo_de_solicitud' : 'Venta'})
