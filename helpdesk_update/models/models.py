@@ -89,6 +89,36 @@ class helpdesk_update(models.Model):
             sale.action_confirm()
     
     
+    
+    @api.onchange('x_studio_field_yPznZ')
+    def cambio(self):
+      _logger.info('************* haciendo algo xD ' )
+      for record in self:  
+        if record.team_id.id == 76 :
+            sale = self.env['stock.picking'].create({'partner_id' : record.partner_id.id
+                                             ,'almacenOrigen':record.x_studio_empresas_relacionadas.id
+                                             ,'almacenOrigen':record.x_studio_field_yPznZ.id        
+        
+                                            #, 'origin' : "Ticket de tóner: " + str(record.ticket_type_id.id)
+                                            #, 'x_studio_tipo_de_solicitud' : "Venta"
+                                            #, 'x_studio_requiere_instalacin' : True
+                                                     
+                                            #, 'user_id' : record.user_id.id                                           
+                                            #, 'x_studio_tcnico' : record.x_studio_tcnico.id
+                                            , 'warehouse_id' : 1   ##Id GENESIS AGRICOLA REFACCIONES  stock.warehouse
+                                            #, 'team_id' : 1      
+                                          })
+            record['x_studio_field_nO7Xg'] = sale.id
+            for c in record.x_studio_equipo_por_nmero_de_serie:
+             # _logger.info('*************cantidad a solicitar: ' + str(c.x_studio_cantidad_a_solicitar))
+              self.env['stock.move'].create({'picking_id' : sale.id
+                                            , 'product_id' : c.id
+                                            #, 'product_uom_qty' : c.x_studio_cantidad_pedida
+                                          })
+            #sale.env['sale.order'].write({'x_studio_tipo_de_solicitud' : 'Venta'})
+            #self.env.cr.execute("update sale_order set x_studio_tipo_de_solicitud = 'Venta' where  id = " + str(sale.id) + ";")
+
+    
     @api.onchange('x_studio_tipo_de_requerimiento')
     def toner(self):
       for record in self:  
@@ -112,6 +142,9 @@ class helpdesk_update(models.Model):
             sale.env['sale.order'].write({'x_studio_tipo_de_solicitud' : 'Venta'})
             self.env.cr.execute("update sale_order set x_studio_tipo_de_solicitud = 'Venta' where  id = " + str(sale.id) + ";")
 
+            
+            
+            
     #@api.onchange('x_studio_verificacin_de_tner')
     def validar_solicitud_toner(self):
         _logger.info("validar_solicitud_toner()")        
