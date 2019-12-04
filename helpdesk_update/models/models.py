@@ -112,7 +112,7 @@ class helpdesk_update(models.Model):
                                             #, 'team_id' : 1      
                                           })
             _logger.info('************* haciendo algo xD '+str(sale.id) )
-            record['x_studio_field_nO7Xg'] = sale.id
+            record['x_studio_transferencia'] = sale.id
             """
             for c in record.x_studio_equipo_por_nmero_de_serie:
              # _logger.info('*************cantidad a solicitar: ' + str(c.x_studio_cantidad_a_solicitar))
