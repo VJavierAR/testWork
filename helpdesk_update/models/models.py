@@ -101,7 +101,7 @@ class helpdesk_update(models.Model):
                                              ,'location_id':1
                                              ,'location_dest_id':1
                                              ,'scheduled_date': record.x_studio_fecha_prevista
-                                             ,'picking_type_id': 3
+                                             ,'picking_type_id': 39
                                             #, 'origin' : "Ticket de tóner: " + str(record.ticket_type_id.id)
                                             #, 'x_studio_tipo_de_solicitud' : "Venta"
                                             #, 'x_studio_requiere_instalacin' : True
