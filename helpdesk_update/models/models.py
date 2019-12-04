@@ -96,8 +96,8 @@ class helpdesk_update(models.Model):
       for record in self:  
         if record.team_id.id == 76 :
             sale = self.env['stock.picking'].create({'partner_id' : record.partner_id.id
-                                             ,'almacenOrigen':record.x_studio_empresas_relacionadas.id
-                                             ,'almacenDestino':record.x_studio_field_yPznZ.id        
+                                             #,'almacenOrigen':record.x_studio_empresas_relacionadas.id
+                                             #,'almacenDestino':record.x_studio_field_yPznZ.id        
                                              ,'location_id':12
                                              ,'location_dest_id':16
                                              ,'scheduled_date': record.x_studio_fecha_prevista
@@ -111,6 +111,7 @@ class helpdesk_update(models.Model):
                                             #, 'warehouse_id' : 1   ##Id GENESIS AGRICOLA REFACCIONES  stock.warehouse
                                             #, 'team_id' : 1      
                                           })
+            _logger.info('************* haciendo algo xD '+str(sale.id) )
             record['x_studio_field_nO7Xg'] = sale.id
             """
             for c in record.x_studio_equipo_por_nmero_de_serie:
