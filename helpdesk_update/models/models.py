@@ -108,7 +108,7 @@ class helpdesk_update(models.Model):
                                                      
                                             #, 'user_id' : record.user_id.id                                           
                                             #, 'x_studio_tcnico' : record.x_studio_tcnico.id
-                                            , 'warehouse_id' : 1   ##Id GENESIS AGRICOLA REFACCIONES  stock.warehouse
+                                            #, 'warehouse_id' : 1   ##Id GENESIS AGRICOLA REFACCIONES  stock.warehouse
                                             #, 'team_id' : 1      
                                           })
             record['x_studio_field_nO7Xg'] = sale.id
