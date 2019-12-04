@@ -115,7 +115,7 @@ class helpdesk_update(models.Model):
             for c in record.x_studio_equipo_por_nmero_de_serie:
              # _logger.info('*************cantidad a solicitar: ' + str(c.x_studio_cantidad_a_solicitar))
               self.env['stock.move'].create({'picking_id' : sale.id
-                                            , 'product_id' : c.id
+                                            , 'product_id' : c.product_id.id
                                              ,'name':"test"
                                              ,'product_uom':1
                                              ,'location_id':1
