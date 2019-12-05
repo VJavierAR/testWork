@@ -16,6 +16,9 @@ class report(models.AbstractModel):
     def render_html(self, docids, data=None):
         report_obj = self.env['report']
         report = report_obj._get_report_from_name('module.report_name')
+        for pic in self._get_picking():
+            if(pic.state=='done'):
+                pic['concentrado']=self.env['ir.sequence'].next_by_code('concentrado')
         docargs = {
             'doc_ids': docids,
             'doc_model': report.model,
