@@ -19,7 +19,7 @@ class report(models.AbstractModel):
         dato=self.env['ir.sequence'].next_by_code('concentrado')
         for pic in self._get_picking():
             if(pic.state=='done'):
-                pic['concentrado']=dato
+                pic.write({'concentrado':dato})
         docargs = {
             'doc_ids': docids,
             'doc_model': report.model,
