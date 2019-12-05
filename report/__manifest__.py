@@ -27,7 +27,7 @@
         'stock',
     ],
     'data': [
-        #'wizard/reporte.xml',
+        'wizard/reporte.xml',
         'views/views.xml'
         #'data/ir_cron.xml',
     ],
