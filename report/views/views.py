@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
+import logging, ast
+_logger = logging.getLogger(__name__)
 
 
 
@@ -21,7 +22,8 @@ class report(models.AbstractModel):
             if(pic.state=='done'):
                 ot=self.env['stock.picking'].search([['origin','=',pic.origin]])
                 for t in ot:
-                    t.write({'concentrado':dato})
+                    t.write({'concentrado':dato})        
+                    _logger.info("concentrado:"+str(dato))  
         docargs = {
             'doc_ids': docids,
             'doc_model': report.model,
