@@ -19,6 +19,7 @@ class report(models.AbstractModel):
         report = report_obj._get_report_from_name('module.report_name')
         dato=self.env['ir.sequence'].next_by_code('concentrado')
         for pic in self._get_picking():
+            _logger.info("estado:"+str(pic.state)) 
             if(pic.state=='done'):
                 ot=self.env['stock.picking'].search([['origin','=',pic.origin]])
                 for t in ot:
