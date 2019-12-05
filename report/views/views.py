@@ -17,6 +17,7 @@ class report(models.AbstractModel):
     def render_html(self, docids, data=None):
         report_obj = self.env['report']
         report = report_obj._get_report_from_name('module.report_name')
+        _logger.info("concentrado:")  
         dato=self.env['ir.sequence'].next_by_code('concentrado')
         for pic in self._get_picking():
             _logger.info("estado:"+str(pic.state)) 
