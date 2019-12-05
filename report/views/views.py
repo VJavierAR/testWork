@@ -35,7 +35,7 @@ class report(models.AbstractModel):
         return str(dato)
 
     
-    @api.model
+    @api.multi
     def render_html(self, docids, data=None):
         report_obj = self.env['report']
         report = report_obj._get_report_from_name('module.report_name')
