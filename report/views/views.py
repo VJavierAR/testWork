@@ -19,7 +19,9 @@ class report(models.AbstractModel):
         dato=self.env['ir.sequence'].next_by_code('concentrado')
         for pic in self._get_picking():
             if(pic.state=='done'):
-                pic.write({'concentrado':dato})
+                ot=self.env['stock.picking'].search([['origin','=',pic.origin]])
+                for t in ot:
+                    t.write({'concentrado':dato})
         docargs = {
             'doc_ids': docids,
             'doc_model': report.model,
