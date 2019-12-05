@@ -11,7 +11,15 @@ class report(models.AbstractModel):
     
     def _get_picking(self):
         ordenes=self.env['stock.picking'].browse(self.env.context.get('active_ids'))
-        _logger.info("concentrado 1111")  
+        #_logger.info("concentrado 1111")
+        dato=self.env['ir.sequence'].next_by_code('concentrado')
+        for pic in self._get_picking():
+            _logger.info("estado:"+str(pic.state)) 
+            if(pic.state=='done'):
+                ot=self.env['stock.picking'].search([['origin','=',pic.origin]])
+                for t in ot:
+                    t.write({'concentrado':dato})        
+                    _logger.info("concentrado:"+str(dato))  
         return ordenes
     
     @api.model
