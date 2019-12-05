@@ -22,6 +22,19 @@ class report(models.AbstractModel):
                     _logger.info("concentrado:"+str(dato))  
         return ordenes
     
+    def concentrado(self,datos):
+        origen=''
+        dato=''
+        for s in datos:
+            origen=s.origin
+        ot=self.env['stock.picking'].search([['origin','=',origen]])
+        if(len(ot)>0):
+            dato=self.env['ir.sequence'].next_by_code('concentrado')
+            for o in ot:
+                o.write({'concentrado':str(dato)})
+        return str(dato)
+
+    
     @api.model
     def render_html(self, docids, data=None):
         report_obj = self.env['report']
