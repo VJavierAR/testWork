@@ -11,6 +11,7 @@ class report(models.AbstractModel):
     
     def _get_picking(self):
         ordenes=self.env['stock.picking'].browse(self.env.context.get('active_ids'))
+        _logger.info("concentrado 1111")  
         return ordenes
     
     @api.model
