@@ -6,6 +6,7 @@ _logger = logging.getLogger(__name__)
 
 
 
+
 class report(models.AbstractModel):
     _name = 'report.report_custom_template'
     
