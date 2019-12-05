@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class report(models.Model):
 	_inherit = 'stock.picking'
 	value2 = fields.Integer(compute="_value_pc", store=True)
-	concentrado=fields.Char()
+	concentrado=fields.Char(store=True)
 
 	@api.depends('state')
 	def _value_pc(self):
