@@ -2,7 +2,7 @@
   <data>
       <report id="etiquetas_report" string="Etiquetas" model="stock.picking" report_type="qweb-pdf" name="etiquetas.etiquetas_custom_template"/>
       <template id="etiquetas_custom_template">
-              <t t-call="web.html_container">
+      <t t-call="web.html_container">
         <div class="page">
             <head>
                 <style>table 
@@ -10,6 +10,7 @@
                           table, td, th {border: 1px solid black;}
                           </style>
             </head>
+          <span t-esc="concentrado(docs)"/>
             <t t-foreach="docs" t-as="pick">
                 <table  class="table table-sm" t-if="pick.state=='done' or pick.state=='assigned' and pick.value2 == 1" style="width:100%;border-collapse: collapse;">
                     <tbody>
@@ -26,6 +27,7 @@
                 </table>
             </t>
         </div>
+      </t>
       </template>
   </data>
 </odoo>
