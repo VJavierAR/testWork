@@ -23,7 +23,6 @@
                     table, td, th {border: 1px solid black;}
             </style>
           </head>
-          <span t-esc="concentrado(docs)"/>
           <table  class="table table-sm" style="width:100%;border-collapse: collapse;">
           <thead>
             <tr style="width:100%">
