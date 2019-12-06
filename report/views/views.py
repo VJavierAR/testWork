@@ -7,7 +7,7 @@ _logger = logging.getLogger(__name__)
 
 class report(models.Model):
     _name = 'report.report_custom_template'
-    orden=fields.Many2one('sale.order')
+    orden=fields.Many2many('sale.order')
     
     def _get_picking(self):
         ordenes=self.env['stock.picking'].browse(self.env.context.get('active_ids'))
@@ -21,7 +21,7 @@ class report(models.Model):
                     t.write({'concentrado':dato})        
                     _logger.info("concentrado:"+str(dato))  
         return ordenes
-    
+    @api.multi
     def concentrado(self,datos):
         origen=''
         dato=''
