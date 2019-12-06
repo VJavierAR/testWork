@@ -6,9 +6,8 @@ _logger = logging.getLogger(__name__)
 
 
 class report(models.AbstractModel):
-    _name = 'report.report_custom_template'
-    _descriprion='Reporte x'
-    test=fields.Char()
+    _name = 'etiquetas.etiquetas_custom_template'
+    _descriprion='Reporte etiquetas'
     
     def _get_picking(self):
         ordenes=self.env['stock.picking'].browse(self.env.context.get('active_ids'))
