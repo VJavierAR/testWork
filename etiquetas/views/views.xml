@@ -11,7 +11,7 @@
                           </style>
             </head>
             <t t-foreach="docs" t-as="pick">
-                <table  class="table table-sm" t-if="pick.state=='done' or pick.state=='assigned' and pick.value2 == 1" style="width:100%;border-collapse: collapse;">
+                <table  class="table table-sm" t-if="pick.state=='done' or pick.state=='assigned' and pick.value2 == 1" style="width:50%;border-collapse: collapse;">
                     <tbody>
                         <t style="width:50%"  align="left"t-foreach="pick.move_ids_without_package" t-as="move">
                                 <td style="width:50%">
