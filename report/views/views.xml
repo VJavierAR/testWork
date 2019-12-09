@@ -15,7 +15,7 @@
         <div class="header">
           <img t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" style="max-height: 45px;" alt="Logo"/>
           <p t-field="res_company.name"/>
-          <p t-esc="today()"><strong>Cliente</strong></p>
+          <p t-esc="datetime.datetime.now()"><strong>Cliente</strong></p>
         </div>
         <div class="page">
           <head>
