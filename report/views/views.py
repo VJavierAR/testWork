@@ -5,9 +5,9 @@ import logging, ast
 _logger = logging.getLogger(__name__)
 
 
-class report(models.Model):
+class report(models.AbstractModel):
     _name = 'report.report_custom_template'
-    orden=fields.Many2many('sale.order')
+    #orden=fields.Many2many('sale.order')
     
     def _get_picking(self):
         ordenes=self.env['stock.picking'].browse(self.env.context.get('active_ids'))
