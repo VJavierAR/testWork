@@ -21,7 +21,7 @@ class report(models.Model):
                     t.write({'concentrado':dato})        
                     _logger.info("concentrado:"+str(dato))  
         return ordenes
-
+    @api.multi
     def concentrado(self,datos):
         origen=''
         dato=''
