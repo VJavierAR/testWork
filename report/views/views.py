@@ -13,7 +13,7 @@ class report(models.AbstractModel):
         ordenes=self.env['stock.picking'].browse(self.env.context.get('active_ids'))
         #_logger.info("concentrado 1111")
         dato=self.env['ir.sequence'].next_by_code('concentrado')
-        for pic in self._get_picking():
+        for pic in ordenes:
             _logger.info("estado:"+str(pic.state)) 
             if(pic.state=='done'):
                 ot=self.env['stock.picking'].search([['origin','=',pic.origin]])
