@@ -82,10 +82,10 @@
                             </t>
                         </td>
                       <td style="width:14%">
-                        <t t-if="pick.sale_id.partner_id.state_id.code==DIF">
+                        <t t-if="pick.sale_id.partner_id.state_id.code=='DIF'">
                           <span>Local</span>
                         </t>
-                        <t t-elif="pick.sale_id.partner_id.state_id.code!=DIF">
+                        <t t-elif="pick.sale_id.partner_id.state_id.code!='DIF'">
                            <span t-field="pick.sale_id.partner_id.state_id.code"/>
                         </t>
                       </td>
