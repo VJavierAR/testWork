@@ -9,7 +9,7 @@ class report(models.Model):
 	@api.depends('state')
 	def _value_pc(self):
 		for record in self:
-			if('SU' in record.name):
+			if('SU' in record.name and record.state=='done'):
 				record['value2'] = 1
-			if('RE' in record.name):
+			if('RE' in record.name and record.state=='done'):
 				record['value2']=2
